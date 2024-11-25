@@ -18,6 +18,7 @@ model Venta {
   nombre  String  
   cafes   Cafe[]
   mesa    Int
+  userId Int
   createdAt DateTime @default(now())
 }
 
@@ -27,4 +28,11 @@ model Cafe {
   precio  Int
   ventaId Int 
   venta Venta @relation(fields: [ventaId], references: [id], onDelete: Cascade)
+}
+
+model Registro {
+  id          Int     @id @default(autoincrement())
+  nombre      String
+  email       String @unique
+  contrasena String
 }
